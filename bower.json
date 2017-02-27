@@ -1,10 +1,10 @@
 {
-  "name": "amdocs_exp_center",
+  "name": "movie_recommender",
   "version": "0.0.0",
   "authors": [
     "roybirger <birger.roy@gmail.com>"
   ],
-  "description": "Amdocs Experience Center",
+  "description": "Fuse day 2017 ML movie recommendations",
   "license": "MIT",
   "private": true,
   "ignore": [
