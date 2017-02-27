@@ -11,7 +11,8 @@ export default Vue.extend({
   data() {
     return {
       user: {},
-      message: null
+      message: null,
+      results: null
     };
   },
 
@@ -40,12 +41,16 @@ export default Vue.extend({
     saveSearch(){
       return searchResource.post('/', this.user)
         .then((response) => {
-          this.search = response.data;
+          //this.results = response.data;
+          console.log(response);
+          this.results = [
+            { 'name': 'Aliens', 'poster': 'https://images-na.ssl-images-amazon.com/images/M/MV5BNGYxMTA0M2EtYjg0Yy00NzI5LTg4NjEtZDA2MTcyOWM0YTVjL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_.jpg' }
+          ];
 
-          this.showMessage({
-            type: 'success',
-            text: 'Search created!'
-          });
+          //this.showMessage({
+            //type: 'success',
+            //text: 'Search created!'
+          //});
 
           // We need to reset the fields after successfull request
           this.fields.reset();
