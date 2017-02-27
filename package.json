@@ -2,7 +2,7 @@
   "name": "movie_recommender",
   "private": true,
   "version": "0.0.0",
-  "description": "Amdocs Experience Center",
+  "description": "Fuse day 2017 ML movie recommendations",
   "scripts": {
     "postinstall": "bower install",
 
