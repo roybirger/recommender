@@ -1,0 +1,29 @@
+{
+  "name": "amdocs_exp_center",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Amdocs Experience Center",
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+
+    "start": "node server.js",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hippotec.repositoryhosting.com/git/hippotec/amdocs_common.git"
+  },
+  "author": "roybirger <birger.roy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0",
+    "shelljs": "^0.6.0",
+    "express": "4.x"
+  }
+}
+
+

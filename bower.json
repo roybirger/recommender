@@ -1,0 +1,27 @@
+{
+  "name": "amdocs_exp_center",
+  "version": "0.0.0",
+  "authors": [
+    "roybirger <birger.roy@gmail.com>"
+  ],
+  "description": "Amdocs Experience Center",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "jquery": "2.2.x",
+    "bootstrap": "3.x",
+    "owl.carousel": "2.x",
+    "jquery-smooth-scroll": "1.7.x",
+    "hammerjs": "~2.0.x"
+  }
+}
