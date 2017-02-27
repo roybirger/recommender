@@ -43,9 +43,9 @@ export default Vue.extend({
         .then((response) => {
           //this.results = response.data;
           console.log(response);
-          this.results = [
-            { 'name': 'Aliens', 'poster': 'https://images-na.ssl-images-amazon.com/images/M/MV5BNGYxMTA0M2EtYjg0Yy00NzI5LTg4NjEtZDA2MTcyOWM0YTVjL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_.jpg' }
-          ];
+          this.results = response.data;//[
+            // { 'name': 'Aliens', 'poster': 'https://images-na.ssl-images-amazon.com/images/M/MV5BNGYxMTA0M2EtYjg0Yy00NzI5LTg4NjEtZDA2MTcyOWM0YTVjL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_.jpg' }
+          // ];
 
           //this.showMessage({
             //type: 'success',

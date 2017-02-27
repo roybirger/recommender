@@ -2,8 +2,9 @@
     <div class="results">
       <ul id="example-1">
         <li v-for="result in results">
-        <h1>{{ result.name }}</h1>
-        <img :src="result.poster"></img>
+        <h1>{{ result.movie.title }}</h1>
+        <div>Score: {{ result.score.score }}</div>
+        <img :src="'http://image.tmdb.org/t/p/w185//' + result.movie.poster_path"></img>
         </li>
       </ul>
     </div>
@@ -32,23 +33,12 @@
         </select>
       </div>
 
-      <div class="form-group row" :class="{'has-danger': errors.has('ageGroup') }">
-        <label for="age-group" class="col-2 col-form-label">Age Group</label>
-        <select v-model="user.ageGroup" data-vv-rules="required">
-          <option>25-30</option>
-          <option>31-35</option>
-          <option>36-40</option>
-        </select>
+      <div class="form-group row" :class="{'has-danger': errors.has('age') }">
+        <label for="age-group" class="col-2 col-form-label">Age</label>
+        <input type="number" v-model="user.age"></input>
       </div>
 
-      <div class="form-group row" :class="{'has-danger': errors.has('genre') }">
-        <label for="genre" class="col-2 col-form-label">Genre</label>
-        <select v-model="user.genre" data-vv-rules="required">
-          <option value="action">Action</option>
-          <option value="comedy">Comedy</option>
-          <option value="drama">Drama</option>
-        </select>
-      </div>
+      
 
       <div class="form-group row">
         <div class="col-2"></div>

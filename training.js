@@ -306,42 +306,51 @@ const movies = [
 ];
 
 function train() {
-    traningArray = movies.reduce((a, movie)=> {
-
+    let traningArray = movies.reduce((a, movie)=> {
         const user = getRandomUserParams();
         const userParamsKeys = Object.keys(user);
 
         userParamsKeys.map(attr => {
             const newUser = getRandomUserParams();
-            let movieObj = {
-                title: movie.title,
-                poster_path: movie.poster_path,
-                popularity: normalize(0, 40, movie.popularity),
-                vote_average: normalize(0, 10, movie.vote_average),
-                year: normalize(1900, 2017, movie.release_date.split('-')[0])
-            };
-            movieObj.score = movieObj.vote_average;
-            a.push(Object.assign(movieObj, newUser));
+            a.push(
+                {
+                    input: getInput(movie, newUser),
+                    output: getOutput(movie)
+                })
         });
+
         return a;
     }, []);
     var net = new brain.NeuralNetwork();
+    console.log(traningArray)
     net.train(traningArray);
     return net;
+}
+
+function getOutput(movie) {
+    return { score: normalize(0, 10, movie.vote_average) }
+}
+
+function getInput(movie, user) {
+    let movieObj = {
+        popularity: normalize(0, 40, movie.popularity),
+        year: normalize(1900, 2017, parseInt(movie.release_date.split('-')[0]))
+    };
+    return Object.assign(movieObj, user);
 }
 
 function getRandomUserParams() {
     let user = {
         gender: getRandomValue([0, 1]),
-        ageRange: normalize(20, 55, Math.floor((Math.random() * 55 - 20) + 20)),
-        score: normalize(3, 11, Math.floor((Math.random() * 10 - 3) + 3))
+        age: normalize(20, 90, Math.floor((Math.random() * 90 - 20) + 20)),
+        //score: normalize(3, 11, Math.floor((Math.random() * 10 - 3) + 3))
     };
 
     return user;
 }
 
 function normalize(min, max, val) {
-    return (val / (max - min)).toFixed(3);
+    return ((val - min) / (max - min)).toFixed(3);
 }
 
 function getRandomValue(arr) {
@@ -349,5 +358,22 @@ function getRandomValue(arr) {
     return arr[index];
 }
 
+function getResult(user, net) {
+    const userNormal = {
+        age: normalize(1900, 2017, user.age),
+        gender: user.gender === 'Male' ? 1 : 0
+    }
+    return movies.map(movie=>getInput(movie, userNormal))
+        .map(input => console.log(input) || net.run(input))
+        .map((score, i) => console.log(score) || ({ movie: movies[i], score }))
+        .sort((a, b) => a.score < b.score)
+}
+
+// const net = train()
+
 module.exports = {
+    train: train,
+    movies: movies,
+    getInput: getInput,
+    getResult:getResult
 };
