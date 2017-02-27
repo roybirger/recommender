@@ -1,0 +1,60 @@
+  <div>
+    <form name="searchForm" class="card card-block" @submit.prevent="handleSubmit">
+
+      <div v-if="message">
+        <div class="alert" :class="{'alert-success': message.type === 'success'}" role="alert">
+          {{message.text}}
+        </div>
+      </div>
+
+      <transition
+        name="error-animation"
+        enter-active-class="animated flipInX"
+        leave-active-class="animated flipOutX">
+        <div v-if="errors.any()" v-for="error in errors.errors" class="alert alert-danger" role="alert">
+          <strong>Doh!</strong> {{error.msg}}
+        </div>
+      </transition>
+
+      <div class="form-group row" :class="{'has-danger': errors.has('gender') }">
+        <label for="gender" class="col-2 col-form-label">Gender</label>
+        <select v-model="user.gender" data-vv-rules="required">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="form-group row" :class="{'has-danger': errors.has('ageGroup') }">
+        <label for="age-group" class="col-2 col-form-label">Age Group</label>
+        <select v-model="user.ageGroup" data-vv-rules="required">
+          <option>25-30</option>
+          <option>31-35</option>
+          <option>36-40</option>
+        </select>
+      </div>
+
+      <div class="form-group row" :class="{'has-danger': errors.has('genre') }">
+        <label for="genre" class="col-2 col-form-label">Genre</label>
+        <select v-model="user.genre" data-vv-rules="required">
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="drama">Drama</option>
+        </select>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-2"></div>
+        <div class="col-10">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-floppy-o"></i> Save
+          </button>
+        </div>
+      </div>
+
+    </form>
+    <hr>
+    <router-link to="/posts">
+      <i class="fa fa-chevron-left"></i> Back to posts
+    </router-link>
+  </div>
+</transition>
