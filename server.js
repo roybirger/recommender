@@ -1,7 +1,12 @@
 var express = require('express');
 
 var app = express();
-app.use(function(req, res, next) {
+app.get('/', function(req, res, next){
+  res.send(200);
+});
 
-    })
-    .listen(8080,'0.0.0.0');
+app.post('/search', function(req, res, next){
+  res.send(200);
+});
+
+app.listen(8000);

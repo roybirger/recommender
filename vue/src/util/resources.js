@@ -8,5 +8,5 @@ export const postsResource = axios.create({
   baseURL: `${API_BASE}/posts/`
 });
 export const searchResource = axios.create({
-  baseURL: `${API_BASE}/search/`
+  baseURL: 'http://localhost:8000/search'
 });
